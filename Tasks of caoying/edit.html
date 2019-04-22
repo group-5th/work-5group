@@ -5,7 +5,7 @@
 	<title>edit</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/add.css">
-	
+	<script type="text/javascript" src="js/MyCustomDatePicker/Calendar.js"> </script> 
 	
 </head>
 <body>
@@ -23,12 +23,15 @@
 				    <input type="email" class="form-control" style="margin-left:20px;">
 			    </div>
 			    <div class="same-div">
-				     <label class="control-label">性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;:</label>
-				   <input type="email" class="form-control" style="margin-left:20px;">
+				     <label class="control-label" style="margin-left:-140px;">性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;:</label>
+				    <select>
+                        <option value ="1">男</option>
+                        <option value ="2">女</option>
+                    </select>
 			    </div>
 			    <div class="the-different-div">
 				    <label class="control-label">出&nbsp;生&nbsp;日&nbsp;期&nbsp;&nbsp;:</label>
-				    <input type="text" class="form-control" style="margin-left:20px;" value="" >
+				    <input type="text" class="form-control" style="margin-left:20px;" value="" onclick="fPopCalendar(event,this,this)" readonly="readonly">
 			    </div>
 			    <div class="the-bottom-div">
 			        <button type="submit" class="btn btn-default">修&nbsp;&nbsp;&nbsp;&nbsp;改</button>
