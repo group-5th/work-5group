@@ -21,11 +21,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	
+	<meta charset="UTF-8">
+	<title>get</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index.css">
 
   </head>
   
   <body>
-    <form action="StuServlet?flag=get" method="post">
+    <!-- <form action="StuServlet?flag=get" method="post">
     	<table>
     	   <tr>
     	   	 <td>姓名</td>
@@ -36,6 +41,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	   </tr>
     	</table>
     </form>
-    <a href="index.jsp">退出</a>
+    <a href="index.jsp">退出</a>  -->
+    
+    <div class="mainbac">
+		<h1>Welcome To Management System</h1>
+		<div class="lii">Operation For Get Imformation</div>
+	    <div class="duzii">
+	      <form class="form-inline" action="StuServlet?flag=get" method="post">
+	    	 <div class="form-group has-success has-feedback">
+				<label class="control-label">姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;:</label>
+				<input type="text" name="name" class="form-control" style="margin-left: 20px;">
+				<button type="submit" class="btn btn-default">提&nbsp;&nbsp;&nbsp;&nbsp;交</button>
+				<a href="index.jsp"><button type="button" class="btn btn-link">退出</button></a>
+
+			 </div>
+		  </form>
+	    </div>
+    </div>
+    
   </body>
 </html>

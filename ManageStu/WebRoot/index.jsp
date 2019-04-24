@@ -20,10 +20,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<meta charset="UTF-8">
+	<title>index</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index.css">
+	
   </head>
   
   <body>
-    <table>   	   
+    <!-- <table>   	   
 		<tr> 
 	      <td ><a href ="add.jsp">插入</a></td>   	   	  	    	 
 	    </tr>
@@ -42,6 +47,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <tr> 
 	      <td ><a href ="index.jsp">退出</a></td>   	   	  	    	 
 	    </tr>	        	       
-  	</table>
+  	</table>-->
+  	
+  	<div class="mainbac">
+		<h1>Welcome To Management System</h1>
+		<div class="lii">Please Choose Your Operation</div>
+	    <div class="duzi">
+	    	 <a href ="add.jsp"><button type="button" class="btn btn-default">插&nbsp;&nbsp;&nbsp;&nbsp;入</button></a>
+	    	 <a href ="get.jsp"><button type="button" class="btn btn-default">查&nbsp;&nbsp;&nbsp;&nbsp;找</button></a>
+	    	 <a href ="StuServlet?flag=all&del=y"><button type="button" class="btn btn-default">删&nbsp;&nbsp;&nbsp;&nbsp;除</button></a>
+	    	 <a href ="StuServlet?flag=all&edit=y"><button type="button" class="btn btn-default">修&nbsp;&nbsp;&nbsp;&nbsp;改</button></a>
+	    	 <a href ="StuServlet?flag=all"><button type="button" class="btn btn-default">输&nbsp;&nbsp;&nbsp;&nbsp;出</button></a>
+	    	 <a href ="index.jsp"><button type="button" class="btn btn-default">退&nbsp;&nbsp;&nbsp;&nbsp;出</button></a>
+	    </div>
+    </div>
+  	
   </body>
 </html>
