@@ -90,6 +90,7 @@ public class StuServlet extends HttpServlet {
 	}
 
 	private void geted(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//控制层控制，调用dao层方法，根据学生学号获得该生信息
 		int ID=Integer.parseInt(request.getParameter("id"));
 		Stu nDao = new Stu();
 		Student nStudent=nDao.getStudent(ID);
@@ -101,6 +102,7 @@ public class StuServlet extends HttpServlet {
 	}
 
 	private void get(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//控制层控制，调用dao层方法，根据学生姓名查询学生信息
 		String name=request.getParameter("name");
 		Stu stu=new Stu();
 	    List<Student> sList=stu.query1(name);
@@ -109,6 +111,7 @@ public class StuServlet extends HttpServlet {
 	}
 
 	private void edit(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		//控制层控制，调用dao层方法，更新学生信息
 		Student student=new Student();
 		student.setBirDate(request.getParameter("birDate"));
 		student.setGender(request.getParameter("gender"));
@@ -120,6 +123,7 @@ public class StuServlet extends HttpServlet {
 	}
 
 	private void add(HttpServletRequest request, HttpServletResponse response) {
+		//控制层控制，调用dao层方法，添加学生信息
 		String name=request.getParameter("name");
 		String birDate=request.getParameter("birDate");
 		String gender=request.getParameter("gender");
@@ -144,6 +148,7 @@ public class StuServlet extends HttpServlet {
 	}
 
 	private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		//控制层控制，调用dao层方法，删除学生信息
 		int ID=Integer.parseInt(request.getParameter("id"));
 		Stu nDao = new Stu();
 		nDao.delStudent(ID);
@@ -152,6 +157,7 @@ public class StuServlet extends HttpServlet {
 	}
 
 	private void getAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//控制层控制，调用dao层方法，获得当前页需要展示的学生信息
 		String edit=request.getParameter("edit");
 		String del=request.getParameter("del");
 		Stu nDao = new Stu();
@@ -163,6 +169,11 @@ public class StuServlet extends HttpServlet {
 		int totalPage;
 		totalPage=nDao.getTotalPage();
 		nresult = nDao.query(currentPage);
+		/*由于在修改/删除页面需要添加对应的操作按钮，为避免页面重复，控制层传参向view层传参，
+		 * view层采用jstl标签即可共享页面
+		 * 当传递edit参数时，前台接收，显示“修改”操作按钮
+		 * 当传递del参数时，前台接受，显示“删除”操作按钮
+		 * 若不传递这两个参数，则不显示操作按钮，仅为信息输出页面*/
 		if(edit!=null&&!edit.equals(""))
 		{
 			request.setAttribute("edit",edit);	

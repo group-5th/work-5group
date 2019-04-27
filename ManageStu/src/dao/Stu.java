@@ -14,11 +14,11 @@ import db.C3p0Con;
 import entity.Student;
 
 public class Stu {                   
-	private static final int PAGESIZE = 5;
-	Connection conn = C3p0Con.getConnection();
+	private static final int PAGESIZE = 5; //设置每页的信息条数
+	Connection conn = C3p0Con.getConnection();  //进行数据库连接
 	QueryRunner runner = new QueryRunner();
 	
-	public void addStudent(Student n){			
+	public void addStudent(Student n){		//增加学生信息	
 		try {
 			String sql = "INSERT INTO student (id,name,birDate,gender) VALUES (?,?,?,?)";
 			Object[] params = {n.getId(),n.getName(),n.getBirDate(),n.getGender()};
@@ -30,7 +30,7 @@ public class Stu {
 		}
 	}
 	
-	public void updateStudent(Student n){
+	public void updateStudent(Student n){ //更新学生信息
 		try {
 			String sql = "UPDATE student SET name=?,birDate=?,gender=? WHERE id=?";
 			Object[] params = {n.getName(),n.getBirDate(),n.getGender(),n.getId()};
@@ -42,7 +42,7 @@ public class Stu {
 		}
 	}
 	
-	public void delStudent(int id){
+	public void delStudent(int id){ //删除学生信息
 		String sql="DELETE FROM student WHERE id=?";
 		try {
 			runner.update(conn, sql, id);
@@ -53,7 +53,7 @@ public class Stu {
 		}
 	}
 	
-	public Student getStudent(int id){
+	public Student getStudent(int id){  //根据学号得到学生信息
 		try {
 			String sql = "SELECT * FROM student WHERE id =?";
 			Object[] param = {id};
@@ -67,7 +67,7 @@ public class Stu {
 		return null;
 	}
 	
-	public List<Student> query(int currentPage){	
+	public List<Student> query(int currentPage){  //查询当前页要展示的学生信息
 		String sql = "SELECT * FROM student LIMIT ?,?";
 		try {
 			List<Student> nresult = runner.query(conn, sql, new BeanListHandler<Student>(Student.class),(currentPage-1)*PAGESIZE,PAGESIZE);
@@ -80,7 +80,7 @@ public class Stu {
 		return null;
 	 }
 	 
-	 public List<Student> query1(String name){	
+	 public List<Student> query1(String name){	//根据学生姓名查询到相应的学生信息
 		String sql = "SELECT * FROM student WHERE name =?";
 		try {
 			List<Student> nresult = runner.query(conn, sql, new BeanListHandler<Student>(Student.class),name);
@@ -93,7 +93,7 @@ public class Stu {
 		return null;
 	}
 	 
-	 public int getTotalPage(){
+	 public int getTotalPage(){ //获得学生信息数所占的总页数
 		int totalPage = 0;
 		int totalrecords = 0;
 		String sql = "SELECT COUNT(*)  FROM student";		
